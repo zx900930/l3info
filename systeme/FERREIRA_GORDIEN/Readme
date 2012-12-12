@@ -1,0 +1,26 @@
+Pour compiler les fichiers, lancer un terminal, aller dans le répertoire FERREIRA_GORDIEN, puis lancer les commandes:
+
+*Pour multi-cc.c:
+	gcc -Wall multi-cc.c -o multi
+
+*Pour threads-cc.c:
+	gcc -Wall threads-cc.c -o threads -lpthread
+
+*Pour pool-cc.c:
+	gcc -Wall pool-cc.c -o pool -lpthread
+
+Puis lancer chacun des fichiers avec un ou plusieurs des fichiers de test présent dans le dossier FERREIRA_GORDIEN.
+	Exemple: ./multi test1.c test2.c test3.c
+
+Les fichiers test1.c et test2.c sont des fichiers correctement codé qui envoient un message sur le terminal; le fichier test3.c est un fichier
+qui est volontairement buggé.
+
+Puis tester les fichiers compilés avec la commande "./"
+	Exemple: ./test1.c
+
+
+
+FERREIRA Ricardo 10906196
+GORDIEN Grégory 10905775
+
+

@@ -1,0 +1,32 @@
+OBJ1 = client.o
+OBJ2 = serveur.o
+CC?= gcc
+CFLAGS?= -O
+DEBUG = 0
+ifeq ($(DEBUG),1)
+CFLAGS = "-Wall -g -O"
+endif
+
+all: client serveur
+
+client: $(OBJ1)
+	@echo "Compilation de $@"
+	@echo "Edition des liens..."
+	$(CC) $(CFLAGS) $< -o $@
+
+serveur: $(OBJ2)
+	@echo "Compilation de $@"
+	@echo "Edition des liens..."
+	$(CC) $(CFLAGS) $< -o $@
+
+%.o: %.c
+	@echo "la cible est $@"
+	@echo "les dépendance plus résentes que $@ sont $?"
+	@echo "les dépendance permettant la génération de la cible est $<"
+	$(CC) $(CFLAGS) -c $< 
+
+clean: 
+	-rm *.o
+	-rm client serveur
+
+

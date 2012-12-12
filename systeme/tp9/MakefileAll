@@ -1,0 +1,10 @@
+all: make1 make2
+
+make1: 
+	make
+
+make2: 
+	make -C ~/l3/systeme/tp5/
+
+clean:
+	rm ~/l3/systeme/tp5/*.o

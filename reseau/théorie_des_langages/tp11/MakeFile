@@ -1,0 +1,24 @@
+OBJ = automate.o
+CC?= gcc
+CFLAGS?= -DTRACE -O
+DEBUG = 0
+ifeq ($(DEBUG),1)
+CFLAGS = -DTRACE -Wall -g -O
+endif
+
+all: automate
+
+automate: $(OBJ)
+	@echo "Compilation de $@"
+	@echo "Edition des liens..."
+	$(CC) $< $(CFLAGS) -o $@
+
+#%.o: %.c
+#	@echo "la cible est $@"
+#	@echo "les dépendance plus résentes que $@ sont $?"
+#	@echo "les dépendance permettant la génération de la cible est $<"
+#	$(CC) $(CFLAGS) -c $< 
+
+clean: 
+#	-rm *.o
+	-rm automate

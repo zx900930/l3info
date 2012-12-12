@@ -1,0 +1,1 @@
+cmd_/export/home/users1/licence/licence3/l3info2012/10905775/l3/systeme/tp13/morse.ko := ld -r -m elf_i386  --build-id -o /export/home/users1/licence/licence3/l3info2012/10905775/l3/systeme/tp13/morse.ko /export/home/users1/licence/licence3/l3info2012/10905775/l3/systeme/tp13/morse.o /export/home/users1/licence/licence3/l3info2012/10905775/l3/systeme/tp13/morse.mod.o

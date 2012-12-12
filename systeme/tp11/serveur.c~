@@ -1,0 +1,61 @@
+#include "serveur_tcp.h"
+
+
+void fonction_service(int socket){
+	char message[256];
+	int taille;
+
+	scanf("%s", message);
+	taille = strlen(message) + 1;
+	message[strlen(message) + 1] = '\0';
+	printf("taille : %d\n", taille);
+
+	write(socket, &taille, sizeof(int));
+	write(socket, message, taille);
+}
+
+
+int main(int argc, char **argv){
+	struct sockaddr_in adresse;
+	int s_ecoute, s_service;
+	socklen_t adresse_length;
+
+	if((s_ecoute = socket(AF_INET, SOCK_STREAM, 0)) < 0){
+		perror("socket");
+		exit(EXIT_FAILURE);
+	}
+
+	adresse.sin_family = AF_INET;
+	adresse.sin_port = htons(atoi(argv[1]));
+	adresse.sin_addr.s_addr = htonl(INADDR_ANY);
+
+	if(bind(s_ecoute, (struct sockaddr *)&adresse, sizeof(adresse)) < 0){
+		perror("bind");
+		exit(EXIT_FAILURE);
+	}
+	if(listen(s_ecoute, NB_CLIENT_MAX) < 0){
+		perror("listen");
+		exit(EXIT_FAILURE);
+	}
+
+	while(1){
+		adresse_length = sizeof(adresse);
+		if((s_service = accept(s_ecoute, (struct sockaddr *)&adresse, &adresse_length)) < 0){
+			perror("accept");
+			exit(EXIT_FAILURE);
+		}
+
+		if(fork() == 0){
+			close(s_ecoute);
+			fonction_service(s_service);
+			exit(EXIT_SUCCESS);
+		}
+		else{
+			close(s_service);
+		}
+		
+	}
+	return EXIT_SUCCESS;
+}
+
+

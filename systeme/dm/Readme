@@ -1,0 +1,32 @@
+Pour lancer ce programme : 
+
+Tout d'abord vous devez aller dans audioSD.c et mettre le chemin a jours dans le fopen !!!
+Dans le serveur ./Liste fonctione mais si ca ne marche pas il faut en faire de même.
+Grand mystère, des fois le client reste bloqué a la reception des titres des musiques
+si ça vous arrive relancez ;)
+
+1) Lancer 2 terminaux
+	-allez dans le repertoire où se trouvent les codes sources
+	-taper make dans l'un des terminaux
+	-pour utiliser les bibliothèques dynamiques il faut taper dans les deux terminaux : 
+
+		LD_LIBRARY_PATH=.
+	
+	-Il faut commencer par lancer le serveur " ./serveur "
+	-Puis on lance les clients : "./client "
+
+	
+
+Une fois connecteé au serveur vous serez guidez par le client.
+
+
+*************************** Pour mD ***********************
+
+Alors le programme fonctionne mais lorsqu'on fait une lecture on perds la main et donc on ne peut plus
+taper quoi que ce soit donc Ctrl+c obligatoire.
+J'ai réussi à faire garder la main au client mais le serveur une fois dans le décodage ne nous écoute plus donc inutile.
+Je sais qu'il faut faire des fils pour s'occuper du décodage et de la lecture mais quand je lance les fils ils lisent et écrivent
+sur la socket de leur père donc ça provoque des conflits et donc inutile.
+Donc voilà notre problème on arrive pas à recupérer le buffer avec la musique décodé dans le client :( 
+
+

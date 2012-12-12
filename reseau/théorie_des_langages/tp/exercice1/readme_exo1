@@ -1,0 +1,8 @@
+Pour l'exercice 1, faire dans un terminal:
+
+bison exo1.y
+gcc exo1.tab.c -ly
+./a.out
+
+
+Puis entrer une chaine de 'a' et de 'b'
