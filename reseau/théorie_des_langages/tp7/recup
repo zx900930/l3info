@@ -1,5 +1,0 @@
-P : PARENTHESE ;
-	|NOMBRE {$$=yylval;}
-	;
-
-
